@@ -1,0 +1,20 @@
+.weather-header {
+    background-image: linear-gradient(to right, cornflowerblue, midnightblue);
+    height: 150px;
+}
+
+.weather-header h1 {
+    padding-top: 40px;
+}
+
+form {
+    display: flex !important;
+    flex-direction: column;
+}
+#form-heading {
+    font-weight: bolder;
+}
+
+.weather-search {
+    width: max-content;
+}
