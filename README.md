@@ -1,7 +1,7 @@
 # Weather Dashboard
 
 ## Description
-This web application has been created for travellers to see the weather outlook for multiple cities and plan a trip accordingly The app can be reach through this <a href="" target="_blank">link</a>.
+This web application has been created for travellers to see the weather outlook for multiple cities and plan a trip accordingly The app can be reach through this <a href="https://hazalsigic.github.io/weather-dashboard/" target="_blank">link</a>.
 
 ## Installation
 N/A
