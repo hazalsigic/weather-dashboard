@@ -9,14 +9,14 @@ if (localStorage.getItem("cities")) {
 
     for (i = 0; i < cityHistory.length; i++) {
         var historyBtn = $("<button>");
-        historyBtn.attr("class", "history-btn");
+        historyBtn.attr({class: "history-button btn btn-secondary", type: "button"});
         historyBtn.text(cityHistory[i]);
         $("#history").append(historyBtn);
     }
 
 } else {
         var historyBtn = $("<button>");
-        historyBtn.attr("class", "history-btn");
+        historyBtn.attr({class: "history-button btn btn-secondary", type: "button"});
         historyBtn.text($("#search-input").val());
         $("#history").append(historyBtn);
 
@@ -39,16 +39,18 @@ $("#search-button").on("click", function(event) {
     //creating buttons for search history
 
     var historyBtn = $("<button>");
-    historyBtn.attr("class", "history-btn");
+    historyBtn.attr({class: "history-button btn btn-secondary", type: "button"});
     historyBtn.text($("#search-input").val());
     $("#history").append(historyBtn);
 
     //function for fetching data through API
     today();
+
+    $("#search-input").val("");
     
 })
    
-$("#history").on("click",".history-btn", function(event) {
+$("#history").on("click",".history-button", function(event) {
 
     event.preventDefault();
     $("#today").empty();
@@ -85,6 +87,10 @@ function today(){
             return response.json();
         })
         .then(function (data) {
+
+            var todayBox = $("<div>");
+            todayBox.attr("class", "border border-dark p-3");
+            $("#today").append(todayBox);
             
             //Today's weather data
             var cityUpperCase = city.charAt(0).toUpperCase() + city.slice(1)
@@ -98,7 +104,7 @@ function today(){
             //Today's heading
             var todaysWeatherHeader = $("<h1>");
             todaysWeatherHeader.text(cityUpperCase + " (" + today.format("DD/MM/YYYY") + ") ");
-            $("#today").append(todaysWeatherHeader);
+            todayBox.append(todaysWeatherHeader);
                 
             //Adding weather icon to the heading
             var todaysIcon = $("<img>");
@@ -107,16 +113,24 @@ function today(){
     
             //adding weather info
             var tempP = $("<p>");
-            tempP.text("Temp: " + todaysTemp + "°C");
-            $("#today").append(tempP);
+            tempP.text("Temp: " + todaysTemp + " °C");
+            todayBox.append(tempP);
             var windP = $("<p>");
-            windP.text("Wind: " + todaysWind + "KPH");
-            $("#today").append(windP);
+            windP.text("Wind: " + todaysWind + " KPH");
+            todayBox.append(windP);
             var humidityP = $("<p>");
-            humidityP.text("Temp: " + todaysWind + "%");
-            $("#today").append(humidityP);
+            humidityP.text("Humidity " + todaysWind + "%");
+            todayBox.append(humidityP);
 
 
+            //5 day forecast
+            var fiveDayHeading = $("<h3>");
+            fiveDayHeading.text("5-Day Forecast:");
+            $("#forecast").append(fiveDayHeading);
+
+            var cardDiv = $("<div>");
+            cardDiv.attr("class", "d-flex flex-row");
+            $("#forecast").append(cardDiv);
 
             //checking the UNIX timestap to find midday weather data for 5 days forecast
 
@@ -129,11 +143,11 @@ function today(){
                     
                     //creating the card
                     var forecastCard = $("<div>");
-                    forecastCard.attr("class", "forecast-card");
-                    $("#forecast").append(forecastCard);
+                    forecastCard.attr("class", "forecast-card mx-auto");
+                    cardDiv.append(forecastCard);
                 
                     //date
-                    var cardHeading = $("<h3>");                        
+                    var cardHeading = $("<h4>");                        
                     var year = dateUnix.getFullYear();
                     var month = dateUnix.getMonth() + 1;
                     var day = dateUnix.getDate();

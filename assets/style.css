@@ -5,18 +5,32 @@
 
 .weather-header h1 {
     padding-top: 40px;
-}
-
-form {
-    display: flexbox;
-    flex-direction: column;
-}
-
-#form-heading {
     font-weight: bolder;
 }
 
-.weather-search {
-    width: max-content;
+.input-group {
+        display: flex;
+        flex-direction: column;
+        width: max-content;
+    }
+
+
+h3 {
+    font-weight: bolder;
+    padding-left: 10px;
+}
+
+.history-button {
+    margin: 5px;
+}
+
+.forecast-card {
+    background-color: rgb(30, 51, 72);
+    color: white;
+    padding: 35px;
+}
+
+#search-button {
+    margin-top: .5rem;
 }
 
