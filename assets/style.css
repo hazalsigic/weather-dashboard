@@ -8,9 +8,10 @@
 }
 
 form {
-    display: flex !important;
+    display: flexbox;
     flex-direction: column;
 }
+
 #form-heading {
     font-weight: bolder;
 }
@@ -18,3 +19,4 @@ form {
 .weather-search {
     width: max-content;
 }
+
