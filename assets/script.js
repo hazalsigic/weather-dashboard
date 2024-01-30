@@ -112,7 +112,11 @@ function today(){
                 
             //Adding weather icon to the heading
             var todaysIcon = $("<img>");
-            todaysIcon.attr("src", "https://openweathermap.org/img/wn/" + todaysIconCode + "@2x.png");
+            todaysIcon.attr({
+                rel: "icon", 
+                type: "image/x-icon",
+                src: "https://openweathermap.org/img/wn/" + todaysIconCode + "@2x.png"
+                });
             todaysWeatherHeader.append(todaysIcon);
     
             //adding weather info
@@ -162,7 +166,11 @@ function today(){
                     //icon
                     var iconCode = data.list[i].weather[0].icon;
                     var thatDaysIcon = $("<img>");
-                    thatDaysIcon.attr("src", "https://openweathermap.org/img/wn/" + iconCode + "@2x.png");
+                    thatDaysIcon.attr({
+                        rel: "icon", 
+                        type: "image/x-icon",
+                        src: "https://openweathermap.org/img/wn/" + iconCode + "@2x.png"
+                        });
                     forecastCard.append(thatDaysIcon);
                 
                     //temperature
