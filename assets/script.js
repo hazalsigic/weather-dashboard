@@ -1,7 +1,8 @@
 var cityHistory = [];
 var city;
 
-if (localStorage.getItem("cities")) {
+
+if (localStorage.getItem("cities"))  {
 
     $("#history").empty();
 
@@ -14,11 +15,12 @@ if (localStorage.getItem("cities")) {
         $("#history").append(historyBtn);
     }
 
+
 } else {
-        var historyBtn = $("<button>");
-        historyBtn.attr({class: "history-button btn btn-secondary", type: "button"});
-        historyBtn.text($("#search-input").val());
-        $("#history").append(historyBtn);
+      var historyBtn = $("<button>");
+      historyBtn.attr({class: "history-button btn btn-secondary", type: "button"});
+      historyBtn.text($("#search-input").val());
+      $("#history").append(historyBtn);
 
 }
 
@@ -61,12 +63,14 @@ $("#history").on("click",".history-button", function(event) {
 })
 
 
+
+
 function today(){
     
     //getting lattitude and longitute info of the city
     // Geocodıng API URL
     
-    var geocodingQueryUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=&appid=048d98def2a36b191797cfc81767ae40"; 
+    var geocodingQueryUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=&appid=048d98def2a36b191797cfc81767ae40"; 
     
     fetch(geocodingQueryUrl)
     
